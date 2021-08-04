@@ -1,0 +1,5 @@
+first = int(input())
+second = int(input())
+third = int(input())
+lnum = int(max(first,second,third))
+print("MAX :",lnum)

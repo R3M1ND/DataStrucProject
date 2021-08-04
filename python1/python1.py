@@ -4,4 +4,4 @@ for i in range(myinput) :
         print("*",end="")
         j+=1
     print()
-    i+=1 #kuy
+    i+=1 
