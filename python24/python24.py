@@ -1,20 +1,18 @@
-def splitlst(lst1,ct):
-    return lst1[:ct]
-
 print("*** Fun with countdown ***")
 lst1 = list(map(int, input("Enter List : ").split()))
-lst2 = []
-lst3 = []
-count = 0
+size = len(lst1)
+idxlst = [idx + 1 for idx , val in enumerate(lst1) if val == 1 ]
+res = [lst1[i:j] for i,j in zip([0] + idxlst,idxlst + 
+        ([size] if idxlst[0] == size else []))]
 
-for i in range(len(lst1)) :
-    count = lst1.count(1)
-    if count == 1 :
-        lst2 = splitlst(lst1,count+1)
-        lst2.sort(reverse=True)
-        lst3.append(lst2)
-        count = 0
-print(lst3)
-#print(count)
+for i in res :
+    count = 0
+    for j in range(len(i)-1,0,-1) :
+        if(i[j-1] - i[j] != 1) :
+            for k in range(len(i)-count-1):
+                i.remove(i[0])
+        else :
+            count += 1
 
+print("[{},".format(len(res)),str(res)+"]")
 

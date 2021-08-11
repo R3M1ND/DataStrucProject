@@ -1,11 +1,14 @@
-#from itertools import permutations
-import itertools
+def permute(num) :
+    resultp = [[]]
+    for i in num :
+        nper = []
+        for permu in resultp :
+            for j in range(len(permu) + 1) :
+                nper.append(permu[:j] + [i] + permu[j:])
+                resultp = nper
+    return resultp
 
-lst = []
-lst2 =[]
 print("*** Fun with permute ***")
-n = list(map(int, input("Enter List : ").split(",")))
-print("Original Cofllection:",n)
-n.sort(reverse = True)
-print("Collection of distinct numbers:") 
-print(list(itertools.permutations(n)))
+n = list(map(int, input("input : ").split(",")))
+print("Original Cofllection: ",n)
+print("Collection of distinct numbers:\n",permute(n)) 
