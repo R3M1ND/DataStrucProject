@@ -1,4 +1,4 @@
-'''print("*** Fun with countdown ***")
+print("*** Fun with countdown ***")
 lst1 = list(map(int, input("Enter List : ").split()))
 size = len(lst1)
 idxlst = [idx + 1 for idx , val in enumerate(lst1) if val == 1 ]
@@ -24,3 +24,4 @@ sep = ' '
 
 print(sep.join(objTuple))   # Python+Java+Kotlin
 print('-'.join(objDict))
+'''
