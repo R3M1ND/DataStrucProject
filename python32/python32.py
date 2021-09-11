@@ -50,3 +50,4 @@ def colorCrush(inp) :
 lst1 = input('Enter Input : ')
 colorCrush(lst1)
 
+

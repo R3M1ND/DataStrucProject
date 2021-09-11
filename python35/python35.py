@@ -1,7 +1,6 @@
 class Queue :
     def __init__(self) :
         self.data = []
-        self.__len__ = 0
     def len(self) :
         return len(self.data)
     def enqueue(self,item) : 
