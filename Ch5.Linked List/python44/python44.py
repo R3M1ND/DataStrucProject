@@ -45,31 +45,3 @@ class Linkedlist :
             prev = current
             current = next
         self.head = prev
-def posfixFunc(lst) :
-    c={'+': 1,'-':1,'*':2,'/':2,'^':3}
-    l = Linkedlist()
-    l2 = Linkedlist()
-
-    for i in lst:
-        if i.isupper() or i.islower():
-            l2.push(i)
-        else:
-            if l.isEmpty():
-                l.push(i)
-            elif i =='(': 
-                l.push('(')
-            elif i ==')': 
-                while l.isEmpty()==False and l.peek() != '(':
-                    l2.push(l.pop())
-                l.pop()
-            else :
-                while l.isEmpty()==False and l.peek() != '(' and c[l.peek()]>=c[i]:
-                    l2.push(l.pop())
-                l.push(i)
-    while not l.isEmpty():
-        l2.push(l.pop())
-    l2.reverse()
-    print("Postfix :",l2)
-
-inp = input("Enter Infix : ")
-posfixFunc(inp)
