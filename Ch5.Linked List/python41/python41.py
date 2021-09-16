@@ -30,14 +30,16 @@ class DoublyLinkedlist :
             current.next = prev
             prev = current
             current = next
-        self.head = prev
-    def index(self,data) :
+        self.dummy = prev
+    def indexOf(self,data) :
         q = self.dummy.next
         for i in range(len(self)) :
             if q.data == data :
                 return i 
             q = q.next
         return -1
+    def isIn(self,data) :
+        return self.indexOf(data) >= 0
     def nodeAt(self,i) :
         p = self.dummy
         for j in range(-1,i) :
@@ -56,33 +58,69 @@ class DoublyLinkedlist :
         p.next = x
         x.prev = p
         self.size -= 1 
-    def delate(self,i) :
-        if self.isEmpty():
-            print("Not Found!",end="")
-        else :
-            self.removeNode(self.nodeAt(i))
+    def delete(self,i) :
+        self.removeNode(self.nodeAt(self.indexOf(i)))
 
 def mainfunc(num) :
     l = DoublyLinkedlist()
-    
-    
+    k = 0
+        
     for i in num :
         if (i.split())[0] == 'A' :
             l.append(int((i.split())[1]))                
             print("linked list :",l)
             l.reverse()
             print("reverse :",l)
-
-        if (i.split())[0] == 'R' :
-            l.delate(int((i.split())[1]))
-            print(l)
+            l.reverse()
 
         if (i.split())[0] == 'Ab' :           
-            l.insert(l.nodeAt(0),int((i.split())[1]))
+            l.insert(l.nodeAt(0),int((i.split())[1]))           
             print("linked list :",l)
-            #l.reverse()
-            #print("reverse :",l)    
-    
+            l.reverse()                       
+            print("reverse :",l)
+            l.reverse()    
 
+        if (i.split())[0] == 'R' :
+            if l.isEmpty() and int((i.split())[1]) == 0 :
+                print("Not Found!")
+                print("linked list :",l)
+                l.reverse()                       
+                print("reverse :",l)
+                l.reverse()
+            else :
+                print("removed : {} from index : {}".format(int((i.split())[1]),l.indexOf(int((i.split())[1]))))
+                l.delete(int((i.split())[1]))
+                print("linked list :",l)
+                l.reverse()                       
+                print("reverse :",l)
+                l.reverse()
+            
+        if (i.split())[0] == 'I' :
+            if l.isEmpty() and int((((i.split())[1]).split(":"))[0]) != 0 :                
+                print("Data cannot be added")
+                print("linked list :",l)
+                l.reverse()                       
+                print("reverse :",l)
+                l.reverse()
+            elif int((((i.split())[1]).split(":"))[0]) < 0 :
+                print("Data cannot be added")
+                print("linked list :",l)
+                l.reverse()                       
+                print("reverse :",l)
+                l.reverse()
+            elif len(l) < int((((i.split())[1]).split(":"))[0]) :
+                print("Data cannot be added")
+                print("linked list :",l)
+                l.reverse()                       
+                print("reverse :",l)
+                l.reverse()
+            else :
+                l.insert(l.nodeAt(int((((i.split())[1]).split(":"))[0])),int((((i.split())[1]).split(":"))[1]))
+                print("index = {} and data = {}".format(l.indexOf(int((((i.split())[1]).split(":"))[1])),int((((i.split())[1]).split(":"))[1])))                
+                print("linked list :",l)
+                l.reverse()                       
+                print("reverse :",l)
+                l.reverse()
+    
 num = [i for i in input("Enter Input : ").split(",")]
 mainfunc(num)
