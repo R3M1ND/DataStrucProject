@@ -1,22 +1,39 @@
-def rod(row) :
-    if row == 0:
-        return
-    i = row + 1
-    print("|  ",end="")
-    rod(row-1)        
-    #rod(i-1)
-    #print("|  ",end="")
-    #print()
+def rod(maxn = 0) :
+    if maxn > 0 :
+        if maxn == x :
+            print("|  |  |")
+        if len(A) > maxn: #print first row
+            print(str(A[maxn]),end="  ")
+        else :
+            print("|",end="  ")
+        if len(B) > maxn : #change rod
+            print(str(B[maxn]),end="  ")
+        else :
+            print("|",end="  ")
+        if len(C) > maxn :
+            print(str(C[maxn]),end="  ")
+        else :
+            print("|",end="  ")
+        print("")
+        rod(maxn-1)
     
-def move(n,a,c,b) : #(n,from rod,to rod,auxrod)
+def move(n,a:list,c:list,b:list,maxn) : #(n,from rod -> list,to rod->list,auxrod->list,max = บรรทัด)
     if n == 1 :
-        print(n, 'from', a,'to', c)
-        
+        print('move',n, 'from ', a[0],'to', c[0])
+        c.append(a.pop())
+        rod(maxn)       
     else :       
-        move(n-1,a,b,c) #from , aux , to                  
-        print(n, 'from', a, 'to', c)
-        move(n-1,b,c,a)#aux , to , from
+        move(n-1,a,b,c,maxn) #from , aux , to                  
+        print('move',n, 'from ', a[0], 'to', c[0])
+        c.append(a.pop())
+        rod(maxn)
+        move(n-1,b,c,a,maxn)#aux , to , from
 
+global x ;
+global A,B,C
 n = int(input("Enter Input : "))
-move(n,'A','C','B')
+x = n
+A,B,C = ['A'],['B'],['C']
+A.extend(range(n,0,-1))
 rod(n)
+move(n,A,C,B,n)
