@@ -27,10 +27,11 @@ class LinkedList:
         i = self.head
         before = self.head
         self.size -= 1
-        while i.next != None:
+        while i != None:
             if item == i.data :
                 if i == self.head:
                     self.head = i.next
+                    break
                 else:
                     before.next = i.next
             before = i
@@ -38,19 +39,16 @@ class LinkedList:
     def __str__(self) -> str:
         i,s =self.head,str(self.head.data)
         while i.next != None:
-            #if i.next.next != None : 
             s += " -> " + str(i.next.data)
-            # else:
-            #     s += str(i.next.data)
             i = i.next      
         return s
     def max_digit(self):
         i = self.head
         _max = -9999999999999
         round = 0
-        while i.next != None:
-            if(i.next.data > _max):
-                _max = i.next.data
+        while i != None:
+            if(i.data > _max):
+                _max = i.data
             i = i.next
         while _max >0:
             _max //= 10
@@ -58,8 +56,12 @@ class LinkedList:
         return round+1 
     def get_digit(self,val,digit):
         for i in range(digit-1):
-            val //= 10
-        return val % 10
+            val = int((val/10))
+        if val > 0 :
+            return val % 10
+        else :
+            return (10-val) % 10
+
     def copy(self):
         i = self.head
         this = LinkedList()
@@ -72,22 +74,29 @@ class LinkedList:
         return self.size == 0
 
     def dequeue(self):
-        self.size -= 1
-        temp = self.head.data
-        self.head = self.head.next
-        return temp
-
+        temp = self.head
+        min = 9999999999  
+        while temp != None :
+            #print("Arai wa")
+            if temp.data < min :
+                min = temp.data
+            temp = temp.next 
+        return min
     def radixSort(self):
         order = self.copy()
-        print("Before Radix Sort :",order)
+        stop = False
+        time = 0
         q = [LinkedList() for e in range(10)]
-        for i in range(1,self.max_digit()+2):
+        for i in range(1,self.max_digit()+1):           
             node = order.head
+            print("------------------------------------------------------------")
+            print("Round :",i)
             while node != None:
                 if self.get_digit(node.data,i) == 0:
-                    q[0].append(node.data)
+                    q[0].append(node.data)                  
                 elif self.get_digit(node.data,i) == 1:
                     q[1].append(node.data)
+                    #print("-",node.data)                  
                 elif self.get_digit(node.data,i) == 2:
                     q[2].append(node.data)
                 elif self.get_digit(node.data,i) == 3:
@@ -104,11 +113,25 @@ class LinkedList:
                     q[8].append(node.data)
                 else: q[9].append(node.data)
                 node = node.next
+            
             order = LinkedList()
             for j in range(len(q)):
-                while not q[j].isEmpty():
-                    order.append(q[j].dequeue())
                 
+                print(str(j)+" : ",end="")
+                if self.size == q[0].size :
+                    stop = True
+                while not q[j].isEmpty():                   
+                    p = q[j].dequeue()
+                    q[j].remove(p)
+                    order.append(p)
+                    print(p,end=" ")
+                print()
+            if stop == True :
+                break
+            time += 1
+        print("------------------------------------------------------------")
+        print(time,"Time(s)")            
+        print("Before Radix Sort :",self)                        
         print("After  Radix Sort :",order)
 
 inp = input("Enter Input : ")
@@ -124,4 +147,3 @@ for i in range(len(inp)):
         if i == len(inp)-1:
             seq.append(int(s))
 seq.radixSort()
-#print(seq)

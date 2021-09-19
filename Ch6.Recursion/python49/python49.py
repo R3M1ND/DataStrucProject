@@ -1,6 +1,10 @@
 def underfunc(under) :
     if under == 0  :
-        return                   
+        return                      
+    if under < 0 : 
+        print("_",end="")
+        underfunc(under+1)
+        return
     print("_",end="")
     underfunc(under-1)
 
@@ -12,25 +16,21 @@ def tagfunc(tag):
 
 def patternPositive(inp,num) :
     if inp == 0 :
-        return   
-    underfunc(inp - 1)
-    tagfunc(num - inp + 1)
-    print()
-    patternPositive(inp - 1,num)
-
-def patternNegative(inp,num) :
-    if inp == 0 :
         return
-    i = inp*-1+1   
-    underfunc(num-1)
-    tagfunc(i-1)
-    print("\n",end="")
-    patternNegative(inp + 1,num+1)
+    elif inp > 0 :   
+        underfunc(inp - 1)
+        tagfunc(num - inp + 1)
+        print()
+        patternPositive(inp - 1,num)
+    else :
+        i = inp*-1
+        underfunc(num-inp)       
+        tagfunc(i)
+        print("\n",end="")
+        patternPositive(inp+1,num)
 
 inp = int(input("Enter Input : "))
-if inp > 0 :
-    patternPositive(inp,inp)
-elif inp < 0:
-    patternNegative(inp,1)
-else :
+if inp == 0 :
     print("Not Draw!")
+else :
+    patternPositive(inp,inp)

@@ -1,17 +1,30 @@
+class Node:
+    def __init__(self,data) :
+        self.data = data
+        self.next = None
 class Stack :
-    def __init__(self,list = None) :
-        if list == None :
-            self.item = []
-        else :
-            self.item = list()
+    def __init__(self) :
+        self.item = None
     def isEmpty(self) :
-        return len(self.item) == 0
-    def push(self,i) :
-        return self.item.append(i)
-    def pop(self) :
-        return self.item.pop()
-    def size(self) :
-        return len(self.item)
+        if self.item == None:
+            return True
+        else :
+            return False
+    def push(self,data) :
+        if self.item is None :
+            self.item = Node(data)
+        else :
+            newNode = Node(data)
+            newNode.next = self.item
+            self.item = newNode
+    def pop(self) :      
+        if self.isEmpty() :
+            return None
+        else :
+            popnode = self.item
+            self.item = self.item.next
+            popnode.next = None
+            return popnode
 
 def isMatchedHtml(raw):
     s = Stack()
@@ -21,7 +34,7 @@ def isMatchedHtml(raw):
     while index < len(raw) and balance :
         symbol = raw[index]
         if symbol in "</"  :
-            s.push(symbol)
+            s.push(symbol)    
         else :
             if s.isEmpty() :
                 balance = False
@@ -32,7 +45,6 @@ def isMatchedHtml(raw):
         return "This is match tag HTML"
     else :
         return "This is not match tag HTML"
-
 
 raw = input("Enter HTML content : ")
 print(isMatchedHtml(raw))

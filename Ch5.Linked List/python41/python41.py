@@ -1,4 +1,3 @@
-
 class DoublyLinkedlist :
     class Node:
         def __init__(self, data,prev = None,next = None):
@@ -82,6 +81,12 @@ def mainfunc(num) :
 
         if (i.split())[0] == 'R' :
             if l.isEmpty() and int((i.split())[1]) == 0 :
+                print("Not Found!")
+                print("linked list :",l)
+                l.reverse()                       
+                print("reverse :",l)
+                l.reverse()
+            elif l.isIn(int((i.split())[1])) == False :
                 print("Not Found!")
                 print("linked list :",l)
                 l.reverse()                       
