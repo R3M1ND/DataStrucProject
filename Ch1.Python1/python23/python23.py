@@ -7,7 +7,7 @@ c = int((x/2))
 
 for i in range(x) :
     if i % 2 == 0 :
-        print("#." * b + "#" * a + ".#" * b)
+        print("#." * b + "#" * a + ".#" * b) # * b means print b round  
         if i < c :
             a -= 4 
             b += 1

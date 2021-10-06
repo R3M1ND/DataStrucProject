@@ -15,13 +15,3 @@ for i in res :
             count += 1
 
 print("[{},".format(len(res)),str(res)+"]")
-
-'''
-objTuple = ("Python", "Java", "Kotlin")
-objDict = {"name": "Nai", "country": "Bangkok"}
-
-sep = ' '
-
-print(sep.join(objTuple))   # Python+Java+Kotlin
-print('-'.join(objDict))
-'''

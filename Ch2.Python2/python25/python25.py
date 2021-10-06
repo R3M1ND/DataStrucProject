@@ -38,7 +38,8 @@ class translator:
                 sum -= romans[left]
             else:
                 sum += romans[left]
-        sum += romans[s[-1]]
+        sum += romans[s[-1]] #last char
+        #print(' '.join(map(str,romans.keys())))
         return sum
             
 num = int(input("Enter number to translate : "))
