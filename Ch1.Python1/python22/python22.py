@@ -7,12 +7,12 @@
                 nper.append(permu[:j] + [i] + permu[j:])
                 resultp = nper
     return resultp
-'''
+
 print("*** Fun with permute ***")
 n = list(map(int, input("input : ").split(",")))
 print("Original Cofllection: ",n)
 print("Collection of distinct numbers:\n",permute(n)) 
-
+'''
 import itertools
 lst = []
 lst2 =[]

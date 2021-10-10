@@ -23,8 +23,7 @@ def sizeofUpper(inp) :
     print("Unique Upper case characters :",*lst1)
     print("No. of Lower case Characters :",s)
     print("Unique Lower case characters :",*lst2)
-
-
+    
 print(" *** String count ***")
 inp = input("Enter message : ")
 sizeofUpper(inp)
