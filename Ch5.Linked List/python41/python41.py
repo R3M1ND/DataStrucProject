@@ -59,7 +59,6 @@ class DoublyLinkedlist :
         self.size -= 1 
     def delete(self,i) :
         self.removeNode(self.nodeAt(self.indexOf(i)))
-
 def mainfunc(num) :
     l = DoublyLinkedlist()
     k = 0
