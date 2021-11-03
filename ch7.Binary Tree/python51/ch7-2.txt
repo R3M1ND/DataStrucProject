@@ -1,0 +1,19 @@
+Chapter : 7 - item : 2 - หาค่า height
+ให้น้องรับ input แล้วนำ input นั้นมาสร้าง Binary Search Tree โดย input ตัวแรกสุดจะเป็น Root เสมอ
+จากนั้นหาความสูงของ Binary Search Tree  นั้น
+
+Testcase : #1
+Enter Input : 3 5 2 1 4 6
+Height of this tree is : 2
+
+
+Testcase : #2
+Enter Input : 3 5 2 1 4 6 7
+Height of this tree is : 3
+
+
+Testcase : #3
+Enter Input : 1
+Height of this tree is : 0
+
+
