@@ -1,0 +1,116 @@
+Chapter : 8 - item : 2 - ALV insert
+ให้น้องๆสร้าง AVL Tree ด้วย Class โดยผลลัพธ์ให้แสดงเป็น Tree ในแต่ละรอบหลังจาก Insert ให้ตรวจสอบว่า balance หรือยัง หากไม่ให้ ปรับ Balance ให้เรียบร้อยแล้วและแสดงผล
+
+** ถ้าสงสัยสามารถดู visualization ของ AVL ได้ที่ website นี้ : https://www.cs.usfca.edu/~galles/visualization/AVLtree.html
+
+#code เป็นเพียงตัวอย่างเท่านั้นสามารถเขียนขึ้นเองโดยไม่ต้องอ้างอิงจาก code นี้ก็ได้
+
+------------------------------------------------------------------------
+Testcase student: #1/8
+Enter Input : 1 2 3 4 5 6 7 8
+insert : 1
+ 1
+===============
+insert : 2
+      2
+ 1
+===============
+insert : 3
+Not Balance, Rebalance!
+      3
+ 2
+      1
+===============
+insert : 4
+           4
+      3
+ 2
+      1
+===============
+insert : 5
+Not Balance, Rebalance!
+           5
+      4
+           3
+ 2
+      1
+===============
+insert : 6
+Not Balance, Rebalance!
+           6
+      5
+ 4
+           3
+      2
+           1
+===============
+insert : 7
+Not Balance, Rebalance!
+           7
+      6
+           5
+ 4
+           3
+      2
+           1
+===============
+insert : 8
+                8
+           7
+      6
+           5
+ 4
+           3
+      2
+           1
+===============
+
+Testcase student: #2/8
+Enter Input : 50 40 35 30 20 10 5
+insert : 50
+ 50
+===============
+insert : 40
+ 50
+      40
+===============
+insert : 35
+Not Balance, Rebalance!
+      50
+ 40
+      35
+===============
+insert : 30
+      50
+ 40
+      35
+           30
+===============
+insert : 20
+Not Balance, Rebalance!
+      50
+ 40
+           35
+      30
+           20
+===============
+insert : 10
+Not Balance, Rebalance!
+           50
+      40
+           35
+ 30
+      20
+           10
+===============
+insert : 5
+Not Balance, Rebalance!
+           50
+      40
+           35
+ 30
+           20
+      10
+           5
+===============
+

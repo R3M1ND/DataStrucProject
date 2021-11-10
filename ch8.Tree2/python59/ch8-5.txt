@@ -1,0 +1,339 @@
+Chapter : 8 - item : 5 - จองรถตู้
+บริษัทแห่งหนึ่งมีรถตู้ K คันที่ลูกค้าสามารถเช่าไปใช้งานได้ โดยรถตู้แต่ละคันมีรหัสประจำตัวรถเป็นหมายเลขจำนวนเต็มบวกตั้งแต่ 1 จนถึง K ข้อกำหนดในการเลือกรถตู้ให้ลูกค้ามีอยู่ว่า ลูกค้าจะต้องทำการจองรถตู้ก่อน โดยคำสั่งจองจะต้องระบุจำนวนวันที่จะใช้ จากนั้นผู้จองจะได้รถตู้ที่ว่างให้ใช้เร็วที่สุดเท่าที่จะหาได้จากรถตู้ทั้งหมด
+
+ในกรณีที่มีรถตู้ว่างให้ใช้เร็วที่สุดมากกว่า 1 คัน คันที่มีรหัสประจำรถน้อยกว่าจะถูกเลือกก่อน เช่นถ้าหากมีรถตู้ที่ว่างให้ใช้เร็วที่สุด 3 คัน  ซึ่งมีรหัสประจำรถเป็น 5 , 7 และ 20 รถตู้ที่มีหมายเลข 5 จะถูกเลือกก่อน นอกจากนี้การจองจะให้ความสำคัญกับคำสั่งจองที่มาก่อนเสมอ สำหรับการจองแต่ละครั้ง ผู้จองจะได้รับคำตอบกลับมาว่าได้ใช้รถตู้หมายเลขใด  โดยในตอนแรกรถตู้ทุกคันจะว่างและพร้อมใช้งานทั้งหมด
+
+อธิบาย Input โดย Input จะแบ่งเป็น 2 ฝั่งด้วย /
+-  ฝั่งซ้ายเป็น K ซึ่งหมายถึงเลขประจำตัวรถ โดยเริ่มตั้งแต่ 1 ถึง K
+-  ฝั่งขวาเป็น List จำนวนวันที่จองรถตู้ของลูกค้าที่สั่งจองเข้ามา
+
+
+
+คำใบ้ :  Min Heap
+-----------------------------------------------------------------
+Testcase : #1 1
+Enter Input : 3/3 1 2 2 2 1
+Customer 1 Booking Van 1 | 3 day(s)
+Customer 2 Booking Van 2 | 1 day(s)
+Customer 3 Booking Van 3 | 2 day(s)
+Customer 4 Booking Van 2 | 2 day(s)
+Customer 5 Booking Van 3 | 2 day(s)
+Customer 6 Booking Van 1 | 1 day(s)
+
+Testcase : #2 2
+Enter Input : 5/1 1 1 1 1 1 1 1 1
+Customer 1 Booking Van 1 | 1 day(s)
+Customer 2 Booking Van 2 | 1 day(s)
+Customer 3 Booking Van 3 | 1 day(s)
+Customer 4 Booking Van 4 | 1 day(s)
+Customer 5 Booking Van 5 | 1 day(s)
+Customer 6 Booking Van 1 | 1 day(s)
+Customer 7 Booking Van 2 | 1 day(s)
+Customer 8 Booking Van 3 | 1 day(s)
+Customer 9 Booking Van 4 | 1 day(s)
+
+
+
+<!-- 1301241 num_of_testcase:6<br/>testcase_array : <pre>Array
+(
+    [0] => Array
+        (
+            [testcase_id] => 1448
+            [exercise_id] => 1301241
+            [testcase_content] => 3/3 1 2 2 2 1
+            [active] => yes
+            [show_to_student] => yes
+            [testcase_note] => 1
+            [testcase_output] => Enter Input : 3/3 1 2 2 2 1
+Customer 1 Booking Van 1 | 3 day(s)
+Customer 2 Booking Van 2 | 1 day(s)
+Customer 3 Booking Van 3 | 2 day(s)
+Customer 4 Booking Van 2 | 2 day(s)
+Customer 5 Booking Van 3 | 2 day(s)
+Customer 6 Booking Van 1 | 1 day(s)
+
+            [item_pass] => yes
+            [output_to_show] => Enter Input : 3/3 1 2 2 2 1
+Customer 1 Booking Van 1 | 3 day(s)
+Customer 2 Booking Van 2 | 1 day(s)
+Customer 3 Booking Van 3 | 2 day(s)
+Customer 4 Booking Van 2 | 2 day(s)
+Customer 5 Booking Van 3 | 2 day(s)
+Customer 6 Booking Van 1 | 1 day(s)
+
+            [testcase_student] => Enter Input : 3/3 1 2 2 2 1
+Customer 1 Booking Van 1 | 3 day(s)
+Customer 2 Booking Van 2 | 1 day(s)
+Customer 3 Booking Van 3 | 2 day(s)
+Customer 4 Booking Van 2 | 2 day(s)
+Customer 5 Booking Van 3 | 2 day(s)
+Customer 6 Booking Van 1 | 1 day(s)
+
+        )
+
+    [1] => Array
+        (
+            [testcase_id] => 1449
+            [exercise_id] => 1301241
+            [testcase_content] => 5/1 1 1 1 1 1 1 1 1
+            [active] => yes
+            [show_to_student] => yes
+            [testcase_note] => 2
+            [testcase_output] => Enter Input : 5/1 1 1 1 1 1 1 1 1
+Customer 1 Booking Van 1 | 1 day(s)
+Customer 2 Booking Van 2 | 1 day(s)
+Customer 3 Booking Van 3 | 1 day(s)
+Customer 4 Booking Van 4 | 1 day(s)
+Customer 5 Booking Van 5 | 1 day(s)
+Customer 6 Booking Van 1 | 1 day(s)
+Customer 7 Booking Van 2 | 1 day(s)
+Customer 8 Booking Van 3 | 1 day(s)
+Customer 9 Booking Van 4 | 1 day(s)
+
+            [item_pass] => yes
+            [output_to_show] => Enter Input : 5/1 1 1 1 1 1 1 1 1
+Customer 1 Booking Van 1 | 1 day(s)
+Customer 2 Booking Van 2 | 1 day(s)
+Customer 3 Booking Van 3 | 1 day(s)
+Customer 4 Booking Van 4 | 1 day(s)
+Customer 5 Booking Van 5 | 1 day(s)
+Customer 6 Booking Van 1 | 1 day(s)
+Customer 7 Booking Van 2 | 1 day(s)
+Customer 8 Booking Van 3 | 1 day(s)
+Customer 9 Booking Van 4 | 1 day(s)
+
+            [testcase_student] => Enter Input : 5/1 1 1 1 1 1 1 1 1
+Customer 1 Booking Van 1 | 1 day(s)
+Customer 2 Booking Van 2 | 1 day(s)
+Customer 3 Booking Van 3 | 1 day(s)
+Customer 4 Booking Van 4 | 1 day(s)
+Customer 5 Booking Van 5 | 1 day(s)
+Customer 6 Booking Van 1 | 1 day(s)
+Customer 7 Booking Van 2 | 1 day(s)
+Customer 8 Booking Van 3 | 1 day(s)
+Customer 9 Booking Van 4 | 1 day(s)
+
+        )
+
+    [2] => Array
+        (
+            [testcase_id] => 1474
+            [exercise_id] => 1301241
+            [testcase_content] => 2/3 5 2 4 1
+            [active] => yes
+            [show_to_student] => no
+            [testcase_note] => 3
+            [testcase_output] => Enter Input : 2/3 5 2 4 1
+Customer 1 Booking Van 1 | 3 day(s)
+Customer 2 Booking Van 2 | 5 day(s)
+Customer 3 Booking Van 1 | 2 day(s)
+Customer 4 Booking Van 1 | 4 day(s)
+Customer 5 Booking Van 2 | 1 day(s)
+
+            [item_pass] => no
+            [output_to_show] => Enter Input : 2/3 5 2 4 1
+Customer 1 Booking Van 1 | 3 day(s)
+
+            [testcase_student] => Enter Input : 2/3 5 2 4 1
+Customer 1 Booking Van 1 | 3 day(s)
+
+        )
+
+    [3] => Array
+        (
+            [testcase_id] => 1475
+            [exercise_id] => 1301241
+            [testcase_content] => 6/9 1 10 15 2 3 6 1
+            [active] => yes
+            [show_to_student] => no
+            [testcase_note] => 4
+            [testcase_output] => Enter Input : 6/9 1 10 15 2 3 6 1
+Customer 1 Booking Van 1 | 9 day(s)
+Customer 2 Booking Van 2 | 1 day(s)
+Customer 3 Booking Van 3 | 10 day(s)
+Customer 4 Booking Van 4 | 15 day(s)
+Customer 5 Booking Van 5 | 2 day(s)
+Customer 6 Booking Van 6 | 3 day(s)
+Customer 7 Booking Van 2 | 6 day(s)
+Customer 8 Booking Van 5 | 1 day(s)
+
+            [item_pass] => yes
+            [output_to_show] => Enter Input : 6/9 1 10 15 2 3 6 1
+Customer 1 Booking Van 1 | 9 day(s)
+Customer 2 Booking Van 2 | 1 day(s)
+Customer 3 Booking Van 3 | 10 day(s)
+Customer 4 Booking Van 4 | 15 day(s)
+Customer 5 Booking Van 5 | 2 day(s)
+Customer 6 Booking Van 6 | 3 day(s)
+Customer 7 Booking Van 2 | 6 day(s)
+Customer 8 Booking Van 5 | 1 day(s)
+
+            [testcase_student] => Enter Input : 6/9 1 10 15 2 3 6 1
+Customer 1 Booking Van 1 | 9 day(s)
+Customer 2 Booking Van 2 | 1 day(s)
+Customer 3 Booking Van 3 | 10 day(s)
+Customer 4 Booking Van 4 | 15 day(s)
+Customer 5 Booking Van 5 | 2 day(s)
+Customer 6 Booking Van 6 | 3 day(s)
+Customer 7 Booking Van 2 | 6 day(s)
+Customer 8 Booking Van 5 | 1 day(s)
+
+        )
+
+    [4] => Array
+        (
+            [testcase_id] => 1476
+            [exercise_id] => 1301241
+            [testcase_content] => 3/10 1 2 3 4 5 6 7 8 9
+            [active] => yes
+            [show_to_student] => no
+            [testcase_note] => 5
+            [testcase_output] => Enter Input : 3/10 1 2 3 4 5 6 7 8 9
+Customer 1 Booking Van 1 | 10 day(s)
+Customer 2 Booking Van 2 | 1 day(s)
+Customer 3 Booking Van 3 | 2 day(s)
+Customer 4 Booking Van 2 | 3 day(s)
+Customer 5 Booking Van 3 | 4 day(s)
+Customer 6 Booking Van 2 | 5 day(s)
+Customer 7 Booking Van 3 | 6 day(s)
+Customer 8 Booking Van 2 | 7 day(s)
+Customer 9 Booking Van 1 | 8 day(s)
+Customer 10 Booking Van 3 | 9 day(s)
+
+            [item_pass] => yes
+            [output_to_show] => Enter Input : 3/10 1 2 3 4 5 6 7 8 9
+Customer 1 Booking Van 1 | 10 day(s)
+Customer 2 Booking Van 2 | 1 day(s)
+Customer 3 Booking Van 3 | 2 day(s)
+Customer 4 Booking Van 2 | 3 day(s)
+Customer 5 Booking Van 3 | 4 day(s)
+Customer 6 Booking Van 2 | 5 day(s)
+Customer 7 Booking Van 3 | 6 day(s)
+Customer 8 Booking Van 2 | 7 day(s)
+Customer 9 Booking Van 1 | 8 day(s)
+Customer 10 Booking Van 3 | 9 day(s)
+
+            [testcase_student] => Enter Input : 3/10 1 2 3 4 5 6 7 8 9
+Customer 1 Booking Van 1 | 10 day(s)
+Customer 2 Booking Van 2 | 1 day(s)
+Customer 3 Booking Van 3 | 2 day(s)
+Customer 4 Booking Van 2 | 3 day(s)
+Customer 5 Booking Van 3 | 4 day(s)
+Customer 6 Booking Van 2 | 5 day(s)
+Customer 7 Booking Van 3 | 6 day(s)
+Customer 8 Booking Van 2 | 7 day(s)
+Customer 9 Booking Van 1 | 8 day(s)
+Customer 10 Booking Van 3 | 9 day(s)
+
+        )
+
+    [5] => Array
+        (
+            [testcase_id] => 1494
+            [exercise_id] => 1301241
+            [testcase_content] => 4/1 3 2 10 5 7 1 1 1 2
+            [active] => yes
+            [show_to_student] => no
+            [testcase_note] => 6
+            [testcase_output] => Enter Input : 4/1 3 2 10 5 7 1 1 1 2
+Customer 1 Booking Van 1 | 1 day(s)
+Customer 2 Booking Van 2 | 3 day(s)
+Customer 3 Booking Van 3 | 2 day(s)
+Customer 4 Booking Van 4 | 10 day(s)
+Customer 5 Booking Van 1 | 5 day(s)
+Customer 6 Booking Van 3 | 7 day(s)
+Customer 7 Booking Van 2 | 1 day(s)
+Customer 8 Booking Van 2 | 1 day(s)
+Customer 9 Booking Van 2 | 1 day(s)
+Customer 10 Booking Van 1 | 2 day(s)
+
+            [item_pass] => yes
+            [output_to_show] => Enter Input : 4/1 3 2 10 5 7 1 1 1 2
+Customer 1 Booking Van 1 | 1 day(s)
+Customer 2 Booking Van 2 | 3 day(s)
+Customer 3 Booking Van 3 | 2 day(s)
+Customer 4 Booking Van 4 | 10 day(s)
+Customer 5 Booking Van 1 | 5 day(s)
+Customer 6 Booking Van 3 | 7 day(s)
+Customer 7 Booking Van 2 | 1 day(s)
+Customer 8 Booking Van 2 | 1 day(s)
+Customer 9 Booking Van 2 | 1 day(s)
+Customer 10 Booking Van 1 | 2 day(s)
+
+            [testcase_student] => Enter Input : 4/1 3 2 10 5 7 1 1 1 2
+Customer 1 Booking Van 1 | 1 day(s)
+Customer 2 Booking Van 2 | 3 day(s)
+Customer 3 Booking Van 3 | 2 day(s)
+Customer 4 Booking Van 4 | 10 day(s)
+Customer 5 Booking Van 1 | 5 day(s)
+Customer 6 Booking Van 3 | 7 day(s)
+Customer 7 Booking Van 2 | 1 day(s)
+Customer 8 Booking Van 2 | 1 day(s)
+Customer 9 Booking Van 2 | 1 day(s)
+Customer 10 Booking Van 1 | 2 day(s)
+
+        )
+
+)
+</pre>last_submit : <pre>Array
+(
+    [submission_id] => 17182
+    [stu_id] => 63010295
+    [exercise_id] => 1301241
+    [sourcecode_filename] => 63010295_08_05_0001.py
+    [marking] => 0
+    [time_submit] => 2021-11-10 15:10:29
+    [inf_loop] => No
+    [output] => a:6:{i:0;a:2:{s:6:"status";s:4:"PASS";s:8:"testcase";s:244:"Enter Input : 3/3 1 2 2 2 1
+Customer 1 Booking Van 1 | 3 day(s)
+Customer 2 Booking Van 2 | 1 day(s)
+Customer 3 Booking Van 3 | 2 day(s)
+Customer 4 Booking Van 2 | 2 day(s)
+Customer 5 Booking Van 3 | 2 day(s)
+Customer 6 Booking Van 1 | 1 day(s)
+";}i:1;a:2:{s:6:"status";s:4:"PASS";s:8:"testcase";s:358:"Enter Input : 5/1 1 1 1 1 1 1 1 1
+Customer 1 Booking Van 1 | 1 day(s)
+Customer 2 Booking Van 2 | 1 day(s)
+Customer 3 Booking Van 3 | 1 day(s)
+Customer 4 Booking Van 4 | 1 day(s)
+Customer 5 Booking Van 5 | 1 day(s)
+Customer 6 Booking Van 1 | 1 day(s)
+Customer 7 Booking Van 2 | 1 day(s)
+Customer 8 Booking Van 3 | 1 day(s)
+Customer 9 Booking Van 4 | 1 day(s)
+";}i:2;a:2:{s:6:"status";s:4:"FAIL";s:8:"testcase";s:62:"Enter Input : 2/3 5 2 4 1
+Customer 1 Booking Van 1 | 3 day(s)
+";}i:3;a:2:{s:6:"status";s:4:"PASS";s:8:"testcase";s:324:"Enter Input : 6/9 1 10 15 2 3 6 1
+Customer 1 Booking Van 1 | 9 day(s)
+Customer 2 Booking Van 2 | 1 day(s)
+Customer 3 Booking Van 3 | 10 day(s)
+Customer 4 Booking Van 4 | 15 day(s)
+Customer 5 Booking Van 5 | 2 day(s)
+Customer 6 Booking Van 6 | 3 day(s)
+Customer 7 Booking Van 2 | 6 day(s)
+Customer 8 Booking Van 5 | 1 day(s)
+";}i:4;a:2:{s:6:"status";s:4:"PASS";s:8:"testcase";s:399:"Enter Input : 3/10 1 2 3 4 5 6 7 8 9
+Customer 1 Booking Van 1 | 10 day(s)
+Customer 2 Booking Van 2 | 1 day(s)
+Customer 3 Booking Van 3 | 2 day(s)
+Customer 4 Booking Van 2 | 3 day(s)
+Customer 5 Booking Van 3 | 4 day(s)
+Customer 6 Booking Van 2 | 5 day(s)
+Customer 7 Booking Van 3 | 6 day(s)
+Customer 8 Booking Van 2 | 7 day(s)
+Customer 9 Booking Van 1 | 8 day(s)
+Customer 10 Booking Van 3 | 9 day(s)
+";}i:5;a:2:{s:6:"status";s:4:"PASS";s:8:"testcase";s:399:"Enter Input : 4/1 3 2 10 5 7 1 1 1 2
+Customer 1 Booking Van 1 | 1 day(s)
+Customer 2 Booking Van 2 | 3 day(s)
+Customer 3 Booking Van 3 | 2 day(s)
+Customer 4 Booking Van 4 | 10 day(s)
+Customer 5 Booking Van 1 | 5 day(s)
+Customer 6 Booking Van 3 | 7 day(s)
+Customer 7 Booking Van 2 | 1 day(s)
+Customer 8 Booking Van 2 | 1 day(s)
+Customer 9 Booking Van 2 | 1 day(s)
+Customer 10 Booking Van 1 | 2 day(s)
+";}}
+)
+</pre> status: error -->
