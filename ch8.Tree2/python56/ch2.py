@@ -1,4 +1,4 @@
-
+# Tree Rotate balance
 class TreeNode(object): 
     def __init__(self, val): 
         self.val = val 
@@ -15,7 +15,7 @@ class AVL_Tree(object):
             return TreeNode(key)
         elif key < root.val :
             root.left = self.insert(root.left,key)
-        else:
+        else: 
             root.right = self.insert(root.right,key)
         root.height = 1+ max(self.getheight(root.left),self.getheight(root.right))
         

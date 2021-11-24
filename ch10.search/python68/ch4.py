@@ -1,3 +1,4 @@
+# Rehash
 class Hash:
 
     def __init__(self,size,threshold,maxColl) -> None:

@@ -1,3 +1,4 @@
+# select sort
 def selectSort(inp,n) :
     if n == 0 :
         return inp

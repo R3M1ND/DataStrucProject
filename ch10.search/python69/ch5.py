@@ -1,3 +1,4 @@
+# Minimum weight
 def minimum_weight(order_list, box):
     if box == 1:
         return sum(order_list)

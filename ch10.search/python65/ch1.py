@@ -1,3 +1,4 @@
+# BinarySearch
 def bi_search(l, r, arr, x):
     found = False
     if l>r:

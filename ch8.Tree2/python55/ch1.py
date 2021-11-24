@@ -1,4 +1,4 @@
-
+# Huffman
 class TreeNode(object): 
     def __init__(self, val,freq,left = None,right = None): 
         self.val = val 
