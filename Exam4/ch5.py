@@ -1,42 +1,45 @@
-def mergeSort(arr):
-	if len(arr) > 1:
-		mid = len(arr)//2
-		L = arr[:mid]
-		R = arr[mid:]
-		mergeSort(L)
-		mergeSort(R)
-		i = j = k = 0
+count = 0
+def merge(a) -> None :
+    # print(a)
+    global count
+    if len(a) <= 1 :
+        return a
+
+    if len(a) > 1 :
+        m = len(a) // 2
+        left, right = a[:m],a[m:]
+        merge(left)
+        merge(right)
+
+        i = j = k = 0
+
+        while i < len(left) and j < len(right) :
+            count += 1
+            if left[i] < right[j] :
+                a[k] = left[i]
+                i += 1
+            else :
+                a[k] = right[j]
+                j += 1
+            k += 1
+
+        while i < len(left) :
+            a[k] = left[i]
+            i += 1
+            k += 1
         
-		while i < len(L) and j < len(R):
-			if L[i] < R[j]:
-				arr[k] = L[i]
-				i += 1
-			else:
-				arr[k] = R[j]
-				j += 1
-			k += 1
+        while j < len(right) :
+            a[k] = right[j]
+            j += 1
+            k += 1
 
-		while i < len(L):
-			arr[k] = L[i]
-			i += 1
-			k += 1
+    return a
 
-		while j < len(R):
-			arr[k] = R[j]
-			j += 1
-			k += 1
-        
-def printList(arr):
-    print()
-    print("Sorted -> ",end="")
-    for i in range(len(arr)):		
-        print(arr[i], end=" ")
-
-print(" *** Merge sort ***")    
-input_string = input("Enter some numbers : ")
-A=[]
-for n in input_string.split():
-    A.append(int(n))
-            
-mergeSort(A)
-printList(A)
+if __name__ == '__main__' :
+    print(' *** Merge sort ***')
+    _input = list(map(int, input('Enter some numbers : ').split()))
+    # print(_input)
+    a = merge(_input)
+    print(f'\nSorted -> ', end='')
+    print(*a)
+    print(f'Data comparison =  {count}')
